@@ -1,10 +1,30 @@
-
+package zipcode.rocks;
 public class ParenSymmetry {
 
 
-    private Boolean isBalanced(String s) {
+    private boolean isBalanced(String s) {
+        int a = 0;
+        int b = 0;
+        int c = 0;
+        boolean d = false;
+
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                a += 1;
+            } else if (s.charAt(i) == ')') {
+                b += 1;
+            } else {
+                c += 1;
+            }
+            if ((a + b) % 2 == 0) {
+                d = true;
+            } else {
+                d = false;
+            }
+        }
         // implement this method
-        return null;
+        return d;
     }
 
     private void checkFile(String filename) {
