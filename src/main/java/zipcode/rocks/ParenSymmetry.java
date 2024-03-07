@@ -1,8 +1,9 @@
 package zipcode.rocks;
+import java.util.Scanner;
+
 public class ParenSymmetry {
 
-
-    private boolean isBalanced(String s) {
+    public boolean isBalanced(String s) {
         int a = 0;
         int b = 0;
         int c = 0;
@@ -27,12 +28,16 @@ public class ParenSymmetry {
         return d;
     }
 
-    private void checkFile(String filename) {
+    public void checkFile(String filename) {
+        Scanner scan = new Scanner(filename);
         // open file named filename
 
         // for each line in the file
             // read the line
             // print whether or not the line's parenthesis are balanced
+        for (int i = 0; i < filename.length(); i++) {
+            System.out.println(isBalanced(filename));
+        }
 
         // CLOSE the file
     }
