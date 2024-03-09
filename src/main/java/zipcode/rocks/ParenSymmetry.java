@@ -1,4 +1,6 @@
 package zipcode.rocks;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ParenSymmetry {
@@ -28,21 +30,30 @@ public class ParenSymmetry {
         return d;
     }
 
-    public void checkFile(String filename) {
-        Scanner scan = new Scanner(filename);
+    public void checkFile() throws FileNotFoundException {
         // open file named filename
 
         // for each line in the file
             // read the line
             // print whether or not the line's parenthesis are balanced
-        for (int i = 0; i < filename.length(); i++) {
-            System.out.println(isBalanced(filename));
-        }
+        try {
+            File file = new File("/Users/anthony/Documents/Projects/ParenSymmetry/TestStrings0.txt");
+            Scanner scanner = new Scanner(file);
 
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                System.out.println(isBalanced(line));
+            }
+
+            scanner.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+        }
         // CLOSE the file
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         ParenSymmetry ps = new ParenSymmetry();
 
         Boolean b0 = ps.isBalanced("()");
@@ -61,7 +72,7 @@ public class ParenSymmetry {
             trues = ps.isBalanced(strToTest);
         }
         printResult(trues, true);
-
+        ps.checkFile();
     }
 
     private static void printResult(Boolean b0, boolean b) {
